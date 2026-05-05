@@ -12,6 +12,13 @@ const PUBLIC_DIR = path.join(__dirname, "..");
 app.use(express.static(PUBLIC_DIR));
 
 const PORT = process.env.PORT || 5000;
+<<<<<<< HEAD
+=======
+
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
+});
+>>>>>>> 25616cf (update server changes)
 
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
