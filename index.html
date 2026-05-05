@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kerala Logistics Hub - Professional ETS2 Multiplayer logistics job-logging platform. Track your performance, compete with peers, and showcase your logistics expertise.">
+    <title>Kerala Logistics Hub - ETS2 Multiplayer Job Logger</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/KL_Logo.png">
+    <script src="https://kit.fontawesome.com/8c205f8aef.js" crossorigin="anonymous"></script>
+  
+  </head>
+<body class="bg-background text-text-primary">
+    
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-border">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <svg class="w-10 h-10 text-primary transition-transform duration-300 group-hover:scale-110" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 4L6 14V34L24 44L42 34V14L24 4Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                        <path d="M24 24L6 14M24 24L42 14M24 24V44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="24" cy="24" r="4" fill="currentColor"/>
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="font-headline text-xl font-bold text-primary">Kerala Logistics</span>
+                        <span class="font-accent text-xs text-text-secondary tracking-wider">ETS2 MULTIPLAYER</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="font-cta text-sm font-semibold text-primary hover:text-accent transition-colors duration-300">Home</a>
+                    <a href="leaderboard.html" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">Leaderboard</a>
+                    <a href="#features" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">Features</a>
+                    <a href="#about" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">About</a>
+                    <a href="access.html" class="btn btn-primary text-sm px-5 py-2">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_122b099ee-1769095334358.png" alt="Login icon" class="w-4 h-4 mr-2">
+                        Access Portal
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-primary hover:text-accent transition-colors duration-300" aria-label="Toggle mobile menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-border pt-4">
+                <div class="flex flex-col gap-4">
+                    <a href="index.html" class="font-cta text-sm font-semibold text-primary hover:text-accent transition-colors duration-300">Home</a>
+                    <a href="leaderboard.html" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">Leaderboard</a>
+                    <a href="#features" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">Features</a>
+                    <a href="#about" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">About</a>
+                    <a href="access.html" class="btn btn-primary text-sm w-full justify-center">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_122b099ee-1769095334358.png" alt="Login icon" class="w-4 h-4 mr-2">
+                        Access Portal
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="images/sun_rise.jpg" 
+                 alt="Euro Truck Simulator 2 highway scene with trucks driving at sunrise" 
+                 class="w-full h-full object-cover">
+                 
+            <div class="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background"></div>
+        </div>
+
+        <!-- Animated Grid Pattern -->
+        <div class="absolute inset-0 z-0 opacity-20">
+            <div class="absolute inset-0" style="background-image: linear-gradient(var(--color-primary) 1px, transparent 1px), linear-gradient(90deg, var(--color-primary) 1px, transparent 1px); background-size: 50px 50px;"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="container mx-auto px-6 py-20 relative z-10">
+            <div class="max-w-5xl mx-auto text-center">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-8 animate-fade-in">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <span class="font-cta text-sm text-primary font-semibold">LIVE TRACKING • <span id="vtc-members-badge">0</span> ACTIVE DRIVERS</span>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="font-headline text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-slide-up">
+                    <span class="text-gradient">Professional Logistics</span><br>
+                    <span class="text-text-primary">Tracking for ETS2MP</span>
+                </h1>
+
+                <!-- Subheading -->
+                <p class="text-xl md:text-2xl text-text-secondary mb-12 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 100ms;">
+                    Track your performance, compete with peers, and showcase your logistics expertise in Euro Truck Simulator 2 Multiplayer
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slide-up" style="animation-delay: 200ms;">
+                    <a href="#download" class="btn btn-primary text-lg px-8 py-4 shadow-glow">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_146cfa0c8-1764649038136.png" alt="Download icon" class="w-6 h-6 mr-3">
+                        Download Job Logger
+                    </a>
+                    <a href="leaderboard.html" class="btn btn-outline text-lg px-8 py-4">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1065b17e6-1769095344000.png" alt="Trophy icon" class="w-6 h-6 mr-3">
+                        View Leaderboard
+                    </a>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto animate-fade-in" style="animation-delay: 300ms;">
+                    <div class="stat-card">
+                        <div class="stat-value" id="vtc-members">0</div>
+                        <div class="stat-label">Active Drivers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">156K+</div>
+                        <div class="stat-label">Jobs Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">99.8%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Live Tracking</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1ea378ee6-1766976228845.png" alt="Scroll down indicator" class="w-8 h-8">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-background-light relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle, var(--color-primary) 1px, transparent 1px); background-size: 30px 30px;"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="font-headline text-4xl md:text-5xl font-bold mb-4">
+                    <span class="text-gradient">Platform Features</span>
+                </h2>
+                <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+                    Everything you need to track, compete, and excel in ETS2 Multiplayer logistics
+                </p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="card card-hover p-8 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_11ee5f5b1-1768742283400.png" alt="Real-time tracking icon" class="w-8 h-8">
+                    </div>
+                    <h3 class="font-headline text-2xl font-bold mb-4 text-text-primary">Real-Time Tracking</h3>
+                    <p class="text-text-secondary leading-relaxed">
+                        Monitor your jobs in real-time with instant updates on distance, cargo, and earnings. Never miss a delivery milestone.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="card card-hover p-8 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1dfffc3f7-1769095345472.png" alt="Competitive rankings icon" class="w-8 h-8">
+                    </div>
+                    <h3 class="font-headline text-2xl font-bold mb-4 text-text-primary">Competitive Rankings</h3>
+                    <p class="text-text-secondary leading-relaxed">
+                        Climb the leaderboards and compete with drivers worldwide. Earn achievements and showcase your logistics mastery.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="card card-hover p-8 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_13c6e269a-1769095335488.png" alt="Community features icon" class="w-8 h-8">
+                    </div>
+                    <h3 class="font-headline text-2xl font-bold mb-4 text-text-primary">Community Hub</h3>
+                    <p class="text-text-secondary leading-relaxed">
+                        Connect with fellow drivers, share achievements, and build your reputation in the ETS2 multiplayer community.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="card card-hover p-8 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a37e9f9e-1767497880100.png" alt="Data security icon" class="w-8 h-8">
+                    </div>
+                    <h3 class="font-headline text-2xl font-bold mb-4 text-text-primary">Secure & Reliable</h3>
+                    <p class="text-text-secondary leading-relaxed">
+                        99.8% uptime guarantee with enterprise-grade security. Your data is encrypted and protected at all times.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="card card-hover p-8 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1969b8133-1767490360322.png" alt="Performance analytics icon" class="w-8 h-8">
+                    </div>
+                    <h3 class="font-headline text-2xl font-bold mb-4 text-text-primary">Performance Analytics</h3>
+                    <p class="text-text-secondary leading-relaxed">
+                        Detailed insights into your driving performance, efficiency metrics, and improvement suggestions powered by data.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="card card-hover p-8 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_14659769c-1769095343801.png" alt="Achievement system icon" class="w-8 h-8">
+                    </div>
+                    <h3 class="font-headline text-2xl font-bold mb-4 text-text-primary">Achievement System</h3>
+                    <p class="text-text-secondary leading-relaxed">
+                        Unlock badges, milestones, and special recognition as you progress. Showcase your accomplishments to the community.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Preview Section -->
+    <section class="py-24 bg-background relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="font-headline text-4xl md:text-5xl font-bold mb-4">
+                    <span class="text-gradient">Top Performers</span>
+                </h2>
+                <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+                    See who's leading the pack in Kerala Logistics Hub
+                </p>
+            </div>
+
+            <!-- Leaderboard Cards -->
+            <div class="max-w-4xl mx-auto">
+                <!-- Top 3 Podium -->
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <!-- Rank 2 -->
+                     
+                    <div class="top-card" id="top-2">
+                    <div class="card p-6 text-center order-2 md:order-1 transform md:translate-y-8">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-text-secondary">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f3d732ba-1763301727885.png" 
+                                 alt="Profile picture of second place driver Sarah Martinez" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400'; this.onerror=null;">
+                        </div>
+                        <div class="badge badge-primary mb-3">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1465ce8f0-1768494903017.png" alt="Second place medal icon" class="w-5 h-5 mr-1">
+                            Rank #2
+                        </div>
+                        <h3 class="font-headline text-xl font-bold mb-2">Nik</h3>
+                        <p class="text-text-secondary text-sm mb-3">@nickelodeon</p>
+                        <div class="flex items-center justify-center gap-4 text-sm">
+                            <div>
+                                <div class="font-bold text-primary">1,247</div>
+                                <div class="text-text-tertiary">Jobs</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-primary">98.5%</div>
+                                <div class="text-text-tertiary">Success</div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Rank 1 -->
+                    <div class="top-card" id="top-1">
+                    <div class="card p-6 text-center order-1 md:order-2 card-elevated border-2 border-primary shadow-glow">
+                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-primary">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1b0b35283-1763296734665.png" 
+                                 alt="Profile picture of first place driver Alex Johnson" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400'; this.onerror=null;">
+                        </div>
+                        <div class="badge badge-accent mb-3">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1b0b091ec-1768605153994.png" alt="First place trophy icon" class="w-5 h-5 mr-1">
+                            Rank #1
+                        </div>
+                        <h3 class="font-headline text-2xl font-bold mb-2">shamz</h3>
+                        <p class="text-text-secondary text-sm mb-3">@Shamz67</p>
+                        <div class="flex items-center justify-center gap-4 text-sm">
+                            <div>
+                                <div class="font-bold text-accent">1,856</div>
+                                <div class="text-text-tertiary">Jobs</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-accent">99.2%</div>
+                                <div class="text-text-tertiary">Success</div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Rank 3 -->
+                    <div class="top-card" id="top-3">
+                    <div class="card p-6 text-center order-3 transform md:translate-y-8">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-warning">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10445c3a3-1765642613181.png" 
+                                 alt="Profile picture of third place driver Mike Chen" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400'; this.onerror=null;">
+                        </div>
+                        <div class="badge badge-warning mb-3">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1114984a2-1768671862246.png" alt="Third place medal icon" class="w-5 h-5 mr-1">
+                            Rank #3
+                        </div>
+                        <h3 class="font-headline text-xl font-bold mb-2">Lancer</h3>
+                        <p class="text-text-secondary text-sm mb-3">@lancer6969</p>
+                        <div class="flex items-center justify-center gap-4 text-sm">
+                            <div>
+                                <div class="font-bold text-primary">1,089</div>
+                                <div class="text-text-tertiary">Jobs</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-primary">97.8%</div>
+                                <div class="text-text-tertiary">Success</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- View Full Leaderboard CTA -->
+                <div class="text-center">
+                    <a href="leaderboard.html" class="btn btn-outline text-lg px-8 py-4">
+                        View Full Leaderboard
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-background-light relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Content -->
+                    <div>
+                        <h2 class="font-headline text-4xl md:text-5xl font-bold mb-6">
+                            <span class="text-gradient">About Kerala</span><br>
+                            <span class="text-text-primary">Logistics Hub</span>
+                        </h2>
+                        <p class="text-lg text-text-secondary mb-6 leading-relaxed">
+                            Kerala Logistics Hub is the definitive platform for serious ETS2 multiplayer drivers who want to track their performance, compete with peers, and showcase their logistics expertise. We bridge the gap between simulation gaming and real-world logistics management.
+                        </p>
+                        <p class="text-lg text-text-secondary mb-8 leading-relaxed">
+                            Our platform combines professional logistics tracking with the visual appeal of modern gaming interfaces, creating a unique niche in the gaming utility space. With 99.8% uptime and enterprise-grade security, we ensure your data is always safe and accessible.
+                        </p>
+
+                        <!-- Trust Badges -->
+                        <div class="flex flex-wrap gap-4 mb-8">
+                            <div class="badge badge-success text-base px-4 py-2">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1c9a03ca9-1767135157576.png" alt="Security verified icon" class="w-5 h-5 mr-2">
+                                Secure Platform
+                            </div>
+                            <div class="badge badge-success text-base px-4 py-2">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1035f6fc2-1765028260246.png" alt="Uptime guarantee icon" class="w-5 h-5 mr-2">
+                                99.8% Uptime
+                            </div>
+                            <div class="badge badge-success text-base px-4 py-2">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_192362000-1765152657575.png" alt="Active community icon" class="w-5 h-5 mr-2">
+                                100+ Drivers
+                            </div>
+                        </div>
+
+                        <a href="access.html" class="btn btn-primary text-lg px-8 py-4">
+                            Get Started Today
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1291fe4cd-1767542533390.png" alt="Arrow right icon" class="w-5 h-5 ml-2">
+                        </a>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="relative">
+                        <div class="relative rounded-lg overflow-hidden border-2 border-primary/30 shadow-glow">
+                            <img src="images/trucks.png" 
+                                 alt="The Family members" 
+                                </div>
+                        <!-- Decorative Elements -->
+                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/20 rounded-lg blur-xl"></div>
+                        <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-accent/20 rounded-lg blur-xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-24 bg-background relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: linear-gradient(45deg, var(--color-primary) 25%, transparent 25%, transparent 75%, var(--color-primary) 75%, var(--color-primary)), linear-gradient(45deg, var(--color-primary) 25%, transparent 25%, transparent 75%, var(--color-primary) 75%, var(--color-primary)); background-size: 60px 60px; background-position: 0 0, 30px 30px;"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- Icon -->
+                <div class="w-24 h-24 mx-auto mb-8 bg-primary/10 rounded-2xl flex items-center justify-center border-2 border-primary/30">
+                    <img src="images/joblogger1.png" alt="Download application icon" class="w-16 h-16">
+                </div>
+
+                <h2 class="font-headline text-4xl md:text-5xl font-bold mb-6">
+                    <span class="text-gradient">Download Job Logger</span>
+                </h2>
+                <p class="text-xl text-text-secondary mb-12 max-w-2xl mx-auto">
+                    Get started with Kerala Logistics Hub today. Download our job logger application and start tracking your ETS2 multiplayer performance.
+                </p>
+
+                <!-- Download Options -->
+                <div class="grid md:grid-cols-2 gap-6 mb-12">
+                    <!-- Windows -->
+                    <div class="card card-hover p-8 text-left">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <img src="images/win10.png" alt="Windows operating system icon" class="w-8 h-8">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-headline text-xl font-bold mb-2">Windows</h3>
+                                <p class="text-text-secondary text-sm mb-4">Compatible with Windows 10 and 11</p>
+                                <a href="javascript:void(0)" class="btn btn-primary w-full justify-center">
+                                    <img src="images/win10.png" alt="Download icon" class="w-5 h-5 mr-2">
+                                    Download for Windows
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linux -->
+                    <div class="card card-hover p-8 text-left">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <img src="images/linux.png" alt="Linux operating system icon" class="w-8 h-8">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-headline text-xl font-bold mb-2">Linux</h3>
+                                <p class="text-text-secondary text-sm mb-4">Still working on it!</p>
+                                <a href="javascript:void(0)" class="btn btn-primary w-full justify-center">
+                                    <img src="images/linux.png" alt="Download icon"  class="w-5 h-5 mr-2">
+                                    Under development!
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Requirements -->
+                <div class="card p-8 text-left">
+                    <h3 class="font-headline text-2xl font-bold mb-6 text-center">System Requirements</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a066bcac-1769095337673.png" alt="Memory requirement icon" class="w-5 h-5">
+                                <h4 class="font-cta font-semibold text-primary">Memory</h4>
+                            </div>
+                            <p class="text-text-secondary text-sm">Minimum 4GB RAM</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1b7d3c3a8-1769095333444.png" alt="Storage requirement icon" class="w-5 h-5">
+                                <h4 class="font-cta font-semibold text-primary">Storage</h4>
+                            </div>
+                            <p class="text-text-secondary text-sm">50MB free space</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1cab37805-1769095335516.png" alt="Internet connection icon" class="w-5 h-5">
+                                <h4 class="font-cta font-semibold text-primary">Connection</h4>
+                            </div>
+                            <p class="text-text-secondary text-sm">Stable internet required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-border py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="w-10 h-10 text-primary" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 4L6 14V34L24 44L42 34V14L24 4Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M24 24L6 14M24 24L42 14M24 24V44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="24" cy="24" r="4" fill="currentColor"/>
+                        </svg>
+                        <div class="flex flex-col">
+                            <span class="font-headline text-xl font-bold text-primary">Kerala Logistics</span>
+                            <span class="font-accent text-xs text-text-secondary tracking-wider">ETS2 MULTIPLAYER</span>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary text-sm mb-4 max-w-md">
+                        Professional ETS2 Multiplayer logistics job-logging platform. Track your performance, compete with peers, and showcase your logistics expertise.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://discord.gg/DpKgq6Hs" target="_blank" class="w-10 h-10 bg-surface-light rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors duration-300" aria-label="Discord community">
+                            <i class="fa-brands fa-discord" style="color: #00ACC1;"></i>
+                        </a>
+                        <a href="https://keralalogistics.org.in/" target="_blank" class="w-10 h-10 bg-surface-light rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors duration-300" aria-label="website">
+                            <img src="images/KL_Logo.png" alt="Twitter social media icon"  class="w-5 h-5">
+                        </a>
+                        <a href="https://www.youtube.com/@KeralaLogistics/streams" target="_blank" class="w-10 h-10 bg-surface-light rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors duration-300" aria-label="YouTube channel">
+                            <i class="fa-brands fa-youtube" style="color: #00ACC1;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-cta text-sm font-semibold text-text-primary uppercase tracking-wider mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Home</a></li>
+                        <li><a href="leaderboard.html" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Leaderboard</a></li>
+                        <li><a href="#features" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Features</a></li>
+                        <li><a href="#download" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Download</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="font-cta text-sm font-semibold text-text-primary uppercase tracking-wider mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Documentation</a></li>
+                        <li><a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Contact Us</a></li>
+                        <li><a href="access.html" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Access Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-text-secondary text-sm">© 2026 Kerala Logistics Hub. All Rights Reserved | Developed by Afthab | Thanks to Team Rocket.</p>
+                <div class="flex gap-6">
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+
+
+<script src="js/ui.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-background text-text-primary min-h-screen">
+    <main class="container mx-auto px-6 py-16">
+        <div class="max-w-7xl mx-auto">
+            <header class="mb-10">
+                <div class="flex justify-start w-full mb-8">
+                    <a href="admin.html" class="btn btn-outline btn-small" style="border-radius: 15px; background-color: rgba(0, 88, 104, 0.288); color: rgb(3, 220, 248); ">Back to Admin Panel</a>
+                </div>
+                <div class="text-center mx-auto max-w-3xl">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-6 animate-fade-in">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <span class="font-cta text-sm text-primary font-semibold" style="font-size: 16px;">Analytics Dashboard</span>
+                </div>
+                    <h1 class="font-headline text-4xl md:text-5xl font-bold mb-4">Player Performance</h1>
+                    <p class="text-text-secondary text-base md:text-lg">Featured leaderboard player stats with truck fuel, engine status, cargo, total income, delivery category, and speed category.</p>
+                    <p class="text-sm text-text-secondary/80 mt-3" style="opacity: 60%; color: hsl(0, 100%, 50%);">Refresh the browser manually to see the latest leaderboard status.</p><br>
+                </div>
+            </header>
+
+            <section class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="playerCardGrid">
+                <div class="player-stat-card card-hover">
+                    <div class="player-stat-card__header">
+                        <div class="flex items-center justify-between gap-3">
+                            <div>
+                                <h3 class="player-stat-card__title">Loading players...</h3>
+                                <p class="player-stat-card__subtitle">Waiting for leaderboard data to populate cards.</p>
+                            </div>
+                            <span class="status-pill status-pill--muted">Loading</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        function formatIncome(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function getDeliveryCategory(km) {
+            if (!km) return 'Local Delivery';
+            if (km >= 220) return 'Long Distance';
+            if (km >= 100) return 'Heavy Cargo';
+            if (km >= 40) return 'Express Delivery';
+            return 'Local Delivery';
+        }
+
+        function getStatusVariant(status) {
+            if (status === 'Running' || status === 'On') return 'status-pill--success';
+            if (status === 'Idle' || status === 'Off') return 'status-pill--warning';
+            return 'status-pill--muted';
+        }
+
+        function estimateFuelLevel(totalKm, capacity) {
+            const estimated = Math.max(22, capacity - Math.round(totalKm / 3.5));
+            return Math.min(capacity, estimated);
+        }
+
+        function renderPlayerCard(player, stats) {
+            const jobs = Array.isArray(stats.jobs) ? stats.jobs : [];
+            const latestJob = jobs[jobs.length - 1] || {};
+            const totalIncome = stats.daily ? Object.values(stats.daily).reduce((sum, day) => sum + (day.income || 0), 0) : 0;
+            const totalKm = stats.daily ? Object.values(stats.daily).reduce((sum, day) => sum + (day.km || 0), 0) : 0;
+            const fuelCapacity = 360;
+            const truckFuel = estimateFuelLevel(totalKm, fuelCapacity);
+            const engineStatus = jobs.length > 0 ? 'Running' : 'Idle';
+            const cargo = latestJob.to ? `${latestJob.from || 'Depot'} → ${latestJob.to}` : 'General Freight';
+            const category = getDeliveryCategory(latestJob.km || totalKm);
+            const speedCategory = latestJob.speedCategory || 'Normal';
+            const engineClass = getStatusVariant(engineStatus);
+            const speedClass = speedCategory === 'Normal' ? 'status-pill--info' : speedCategory === 'High' ? 'status-pill--warning' : 'status-pill--muted';
+
+            return `
+                <article class="player-stat-card card-hover">
+                    <div class="player-stat-card__header">
+                        <div class="flex items-center justify-between gap-3">
+                            <div>
+                                <h3 class="player-stat-card__title">${stats.name || player.name || player.id}</h3>
+                                <p class="player-stat-card__subtitle">${player.name || player.id} —> Player status</p>
+                            </div>
+                            <span class="status-pill ${speedClass}">${speedCategory}</span>
+                        </div>
+                    </div>
+
+                    <div class="player-stat-card__grid">
+                        <div class="player-stat-card__item">
+                            <div class="player-stat-card__value">${formatIncome(totalIncome)}</div>
+                            <span class="player-stat-card__label">Total Income</span>
+                        </div>
+                        <div class="player-stat-card__item">
+                            <div class="player-stat-card__value">${cargo}</div>
+                            <span class="player-stat-card__label">Cargo</span>
+                        </div>
+                        <div class="player-stat-card__item">
+                            <div class="player-stat-card__value">${truckFuel} L</div>
+                            <span class="player-stat-card__label">Truck Fuel</span>
+                        </div>
+                        <div class="player-stat-card__item">
+                            <div class="player-stat-card__value">${fuelCapacity} L</div>
+                            <span class="player-stat-card__label">Fuel Capacity</span>
+                        </div>
+                        <div class="player-stat-card__item">
+                            <div class="player-stat-card__value">${category}</div>
+                            <span class="player-stat-card__label">Category</span>
+                        </div>
+                        <div class="player-stat-card__item">
+                            <div class="player-stat-card__value">${engineStatus}</div>
+                            <span class="player-stat-card__label">Engine Status</span>
+                        </div>
+                    </div>
+
+                    <div class="player-stat-card__footer">
+                        <span class="status-pill ${engineClass}">${engineStatus}</span>
+                        <span class="status-pill ${speedClass}">${speedCategory}</span>
+                    </div>
+                </article>
+            `;
+        }
+
+        async function loadAnalyCards() {
+            const grid = document.getElementById('playerCardGrid');
+            if (!grid) return;
+
+            grid.innerHTML = `
+                <div class="player-stat-card card-hover">
+                    <div class="player-stat-card__header">
+                        <div class="flex items-center justify-between gap-3">
+                            <div>
+                                <h3 class="player-stat-card__title">Loading players...</h3>
+                                <p class="player-stat-card__subtitle">Refreshing leaderboard data.</p>
+                            </div>
+                            <span class="status-pill status-pill--muted">Loading</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            try {
+                const res = await fetch('/api/leaderboard');
+                const leaderboard = await res.json();
+                const players = leaderboard.slice(0, 9);
+
+                const cards = await Promise.all(players.map(async (player) => {
+                    try {
+                        const driverRes = await fetch(`/api/driver/${encodeURIComponent(player.id)}`);
+                        const driverStats = await driverRes.json();
+                        return renderPlayerCard(player, driverStats);
+                    } catch (err) {
+                        console.error(`Failed to load stats for ${player.id}`, err);
+                        return `
+                            <article class="player-stat-card card-hover">
+                                <div class="player-stat-card__header">
+                                    <div class="flex items-center justify-between gap-3">
+                                        <div>
+                                            <h3 class="player-stat-card__title">${player.name || player.id}</h3>
+                                            <p class="player-stat-card__subtitle">Leaderboard entry without stats.</p>
+                                        </div>
+                                        <span class="status-pill status-pill--muted">Offline</span>
+                                    </div>
+                                </div>
+                                <div class="player-stat-card__grid">
+                                    <div class="player-stat-card__item"><div class="player-stat-card__value">N/A</div><span class="player-stat-card__label">Income</span></div>
+                                    <div class="player-stat-card__item"><div class="player-stat-card__value">N/A</div><span class="player-stat-card__label">Cargo</span></div>
+                                    <div class="player-stat-card__item"><div class="player-stat-card__value">N/A</div><span class="player-stat-card__label">Fuel</span></div>
+                                    <div class="player-stat-card__item"><div class="player-stat-card__value">N/A</div><span class="player-stat-card__label">Capacity</span></div>
+                                    <div class="player-stat-card__item"><div class="player-stat-card__value">N/A</div><span class="player-stat-card__label">Category</span></div>
+                                    <div class="player-stat-card__item"><div class="player-stat-card__value">N/A</div><span class="player-stat-card__label">Speed</span></div>
+                                </div>
+                            </article>
+                        `;
+                    }
+                }));
+
+                grid.innerHTML = cards.join('');
+            } catch (err) {
+                console.error('Unable to load analytics cards', err);
+                grid.innerHTML = `
+                    <div class="player-stat-card card-hover">
+                        <div class="player-stat-card__header">
+                            <h3 class="player-stat-card__title">Unable to load players</h3>
+                            <p class="player-stat-card__subtitle">Check your API connection and try again.</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        loadAnalyCards();
+    </script>
+</body>
+</html>

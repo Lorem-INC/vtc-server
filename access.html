@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kerala Logistics Hub Access Portal - Secure authentication gateway for ETS2 Multiplayer logistics platform. Admin and guest access available.">
+    <title>Access Portal - Kerala Logistics Hub</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="images/KL_Logo.png">
+     <script src="https://kit.fontawesome.com/8c205f8aef.js" crossorigin="anonymous"></script>
+  
+
+  </head>
+<body class="bg-background text-text-primary min-h-screen flex flex-col">
+    
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-border">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <svg class="w-10 h-10 text-primary transition-transform duration-300 group-hover:scale-110" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 4L6 14V34L24 44L42 34V14L24 4Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                        <path d="M24 24L6 14M24 24L42 14M24 24V44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="24" cy="24" r="4" fill="currentColor"/>
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="font-headline text-xl font-bold text-primary">Kerala Logistics</span>
+                        <span class="font-accent text-xs text-text-secondary tracking-wider">ETS2 MULTIPLAYER</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">Home</a>
+                    <a href="leaderboard.html" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">Leaderboard</a>
+                    <a href="index.html#features" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">Features</a>
+                    <a href="index.html#about" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">About</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-primary hover:text-accent transition-colors duration-300" aria-label="Toggle mobile menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-border pt-4">
+                <div class="flex flex-col gap-4">
+                    <a href="index.html" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">Home</a>
+                    <a href="leaderboard.html" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">Leaderboard</a>
+                    <a href="index.html#features" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">Features</a>
+                    <a href="index.html#about" class="font-cta text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-300">About</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center pt-20 pb-12 px-6 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle, var(--color-primary) 1px, transparent 1px); background-size: 30px 30px;"></div>
+        </div>
+
+        <!-- Animated Grid Lines -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: linear-gradient(var(--color-primary) 1px, transparent 1px), linear-gradient(90deg, var(--color-primary) 1px, transparent 1px); background-size: 50px 50px;"></div>
+        </div>
+
+        <!-- Access Portal Container -->
+        <div class="w-full max-w-6xl mx-auto relative z-10">
+            <!-- Page Header -->
+            <div class="text-center mb-12 animate-fade-in">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <span class="font-cta text-sm text-primary font-semibold">SECURE ACCESS PORTAL</span>
+                </div>
+                <h1 class="font-headline text-4xl md:text-5xl font-bold mb-4">
+                    <span class="text-gradient">Choose Your Access</span>
+                </h1>
+                <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+                    Select your authentication path to enter Kerala Logistics Hub
+                </p>
+            </div>
+
+            <!-- Access Options Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8 animate-slide-up" style="animation-delay: 100ms;">
+                
+                <!-- Admin Access Card -->
+                <div class="card card-hover p-8 relative overflow-hidden group">
+                    <!-- Glow Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div class="relative z-10">
+                        <!-- Icon -->
+                        <div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300 border-2 border-primary/30">
+                            <i class="fa-solid fa-shield fa-2xl" style="color: #4DD0E1; font-size: 3em"></i>
+                        </div>
+
+                        <!-- Title -->
+                        <h2 class="font-headline text-2xl font-bold mb-3 text-text-primary">Admin Access</h2>
+                        <p class="text-text-secondary mb-6 leading-relaxed">
+                            Comprehensive fleet and driver management tools with full system controls and analytics dashboard
+                        </p>
+
+                        <!-- Features List -->
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check" style="color: #6beeff;"></i>
+                                <span class="text-sm text-text-secondary">Full dashboard access</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check" style="color: #6beeff;"></i>
+                                <span class="text-sm text-text-secondary">Player management controls</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check" style="color: #6beeff;"></i>
+                                <span class="text-sm text-text-secondary">Performance analytics</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check" style="color: #6beeff;"></i>
+                                <span class="text-sm text-text-secondary">System configuration</span>
+                            </li>
+                        </ul>
+
+                        <!-- Admin Login Form -->
+                        <form id="admin-form" class="space-y-4">
+                            <div>
+                                <label for="admin-username" class="block text-sm font-medium text-text-secondary mb-2">Username</label>
+                                <div class="relative">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_16f959a00-1767615338436.png" alt="User account icon" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5">
+                                    <input 
+                                        type="text" 
+                                        id="admin-username" 
+                                        name="username"
+                                        class="input pl-11" 
+                                        placeholder="Enter admin username"
+                                        required
+                                        autocomplete="username"
+                                        aria-label="Admin username input field"
+                                    >
+                                </div>
+                                <span id="admin-username-error" class="text-error text-xs mt-1 hidden">Username is required</span>
+                            </div>
+
+                            <div>
+                                <label for="admin-password" class="block text-sm font-medium text-text-secondary mb-2">Password</label>
+                                <div class="relative">
+                                    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1b99ca97b-1769095333767.png" alt="Lock security icon" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5">
+                                    <input 
+                                        type="password" 
+                                        id="admin-password" 
+                                        name="password"
+                                        class="input pl-11 pr-11" 
+                                        placeholder="Enter admin password"
+                                        required
+                                        autocomplete="current-password"
+                                        aria-label="Admin password input field"
+                                    >
+                                    <button 
+                                        type="button" 
+                                        id="toggle-admin-password"
+                                        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary hover:text-primary transition-colors duration-300"
+                                        aria-label="Toggle password visibility"
+                                    >
+                                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_148e1a884-1765409696333.png" alt="Hide password icon" class="w-5 h-5" id="admin-eye-icon">
+                                    </button>
+                                </div>
+                                <span id="admin-password-error" class="text-error text-xs mt-1 hidden">Password is required</span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 rounded border-border bg-surface text-primary focus:ring-2 focus:ring-primary/20">
+                                    <span class="text-sm text-text-secondary">Remember me</span>
+                                </label>
+                                <a href="admin.html" class="text-sm text-primary hover:text-accent transition-colors duration-300">already logged in?</a>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-full text-base shadow-glow" id="admin-submit-btn">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_122b099ee-1769095334358.png" alt="Login icon" class="w-5 h-5 mr-2">
+                                <span>Access Admin Dashboard</span>
+                                <span class="spinner hidden ml-2"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Guest Access Card -->
+                <div class="card card-hover p-8 relative overflow-hidden group">
+                    <!-- Glow Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div class="relative z-10">
+                        <!-- Icon -->
+                        <div class="w-20 h-20 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300 border-2 border-accent/30">
+                            <i class="fa-solid fa-person fa-2xl" style="color: #4DD0E1; font-size: 3.5em;" ></i>
+                        </div>
+
+                        <!-- Title -->
+                        <h2 class="font-headline text-2xl font-bold mb-3 text-text-primary">Guest Access</h2>
+                        <p class="text-text-secondary mb-6 leading-relaxed">
+                            Explore public leaderboards, view driver achievements, and discover the community without registration
+                        </p>
+
+                        <!-- Features List -->
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10b57d829-1766517645947.png" alt="Check mark icon" class="w-5 h-5 mt-0.5 flex-shrink-0">
+                                <span class="text-sm text-text-secondary">View public leaderboards</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10b57d829-1766517645947.png" alt="Check mark icon" class="w-5 h-5 mt-0.5 flex-shrink-0">
+                                <span class="text-sm text-text-secondary">Browse driver profiles</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10b57d829-1766517645947.png" alt="Check mark icon" class="w-5 h-5 mt-0.5 flex-shrink-0">
+                                <span class="text-sm text-text-secondary">Explore achievements</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10b57d829-1766517645947.png" alt="Check mark icon" class="w-5 h-5 mt-0.5 flex-shrink-0">
+                                <span class="text-sm text-text-secondary">No registration required</span>
+                            </li>
+                        </ul>
+
+                        <!-- Guest Access Info -->
+                        <div class="bg-accent/5 border border-accent/20 rounded-lg p-4 mb-6">
+                            <div class="flex items-start gap-3">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_14bff7831-1766620330384.png" alt="Information icon" class="w-5 h-5 mt-0.5 flex-shrink-0">
+                                <div>
+                                    <h3 class="font-cta font-semibold text-accent text-sm mb-1">Quick Access</h3>
+                                    <p class="text-text-secondary text-xs leading-relaxed">
+                                        Guest access provides instant entry to public features. No credentials needed - just click below to explore.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Guest Access Button -->
+                        <a href="leaderboard.html" class="btn btn-accent w-full text-base shadow-glow-accent">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_187ea1425-1767609286606.png" alt="View icon" class="w-5 h-5 mr-2">
+                            Continue as Guest
+                        </a>
+
+                        <!-- Additional Info -->
+                        <p class="text-center text-xs text-text-tertiary mt-4">
+                            Want full access? Download our job logger to create an account
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="card p-6 bg-surface-light border-primary/20 animate-fade-in" style="animation-delay: 200ms;">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_138f31790-1767353529193.png" alt="Security shield with checkmark icon" class="w-7 h-7">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-cta font-semibold text-primary mb-2">Secure Authentication</h3>
+                        <p class="text-text-secondary text-sm leading-relaxed mb-3">
+                            Your credentials are encrypted and protected with enterprise-grade security. We maintain 99.8% uptime with continuous monitoring and regular security audits.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="badge badge-success text-xs">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_13ede69e3-1767292165388.png" alt="Lock with checkmark icon" class="w-4 h-4 mr-1">
+                                SSL Encrypted
+                            </div>
+                            <div class="badge badge-success text-xs">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1cb61755e-1766558487688.png" alt="Shield with lock icon" class="w-4 h-4 mr-1">
+                                2FA Available
+                            </div>
+                            <div class="badge badge-success text-xs">
+                                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1398298d5-1766476603039.png" alt="Database with lock icon" class="w-4 h-4 mr-1">
+                                Data Protected
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Links -->
+            <div class="text-center mt-8 animate-fade-in" style="animation-delay: 300ms;">
+                <p class="text-text-secondary text-sm mb-3">Need assistance?</p>
+                <div class="flex flex-wrap items-center justify-center gap-6">
+                    <a href="javascript:void(0)" class="flex items-center gap-2 text-primary hover:text-accent transition-colors duration-300 text-sm">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184f151c2-1767866492243.png" alt="Help circle icon" class="w-5 h-5">
+                        Help Center
+                    </a>
+                    <a href="javascript:void(0)" class="flex items-center gap-2 text-primary hover:text-accent transition-colors duration-300 text-sm">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1481fb9f4-1769095332633.png" alt="Document file icon" class="w-5 h-5">
+                        Documentation
+                    </a>
+                    <a href="javascript:void(0)" class="flex items-center gap-2 text-primary hover:text-accent transition-colors duration-300 text-sm">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_176ec7792-1768716623004.png" alt="Email contact icon" class="w-5 h-5">
+                        Contact Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-border py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-text-secondary text-sm">© 2026 Kerala Logistics Hub. All Rights Reserved.</p>
+                <div class="flex gap-6">
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Terms of Service</a>
+                    <a href="index.html" class="text-text-secondary hover:text-primary transition-colors duration-300 text-sm">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Admin Password Toggle
+        const adminPasswordInput = document.getElementById('admin-password');
+        const adminToggleBtn = document.getElementById('toggle-admin-password');
+        const adminEyeIcon = document.getElementById('admin-eye-icon');
+
+        adminToggleBtn.addEventListener('click', function() {
+            const type = adminPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            adminPasswordInput.setAttribute('type', type);
+            
+            if (type === 'text') {
+                adminEyeIcon.src = 'https://api.iconify.design/mdi:eye.svg?color=%238B949E';
+                adminEyeIcon.alt = 'Show password icon';
+            } else {
+                adminEyeIcon.src = 'https://api.iconify.design/mdi:eye-off.svg?color=%238B949E';
+                adminEyeIcon.alt = 'Hide password icon';
+            }
+        });
+
+        // Admin Form Validation and Submission
+        const adminForm = document.getElementById('admin-form');
+        const adminUsernameInput = document.getElementById('admin-username');
+        const adminUsernameError = document.getElementById('admin-username-error');
+        const adminPasswordError = document.getElementById('admin-password-error');
+        const adminSubmitBtn = document.getElementById('admin-submit-btn');
+
+        // Mock admin credentials for demonstration
+ 
+        const mockAdminCredentials = {
+            username: 'visionary',
+            password: 'KLHADMIN226SHZ'
+        };
+
+        adminForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset errors
+            adminUsernameError.classList.add('hidden');
+            adminPasswordError.classList.add('hidden');
+            adminUsernameInput.classList.remove('input-error');
+            adminPasswordInput.classList.remove('input-error');
+
+            let isValid = true;
+
+            // Validate username
+            if (!adminUsernameInput.value.trim()) {
+                adminUsernameError.textContent = 'Username is required';
+                adminUsernameError.classList.remove('hidden');
+                adminUsernameInput.classList.add('input-error');
+                isValid = false;
+            }
+
+            // Validate password
+            if (!adminPasswordInput.value.trim()) {
+                adminPasswordError.textContent = 'Password is required';
+                adminPasswordError.classList.remove('hidden');
+                adminPasswordInput.classList.add('input-error');
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Show loading state
+            const btnText = adminSubmitBtn.querySelector('span:first-of-type');
+            const spinner = adminSubmitBtn.querySelector('.spinner');
+            btnText.textContent = 'Authenticating...';
+            spinner.classList.remove('hidden');
+            adminSubmitBtn.disabled = true;
+
+            // Simulate authentication delay
+            setTimeout(function() {
+                const username = adminUsernameInput.value.trim();
+                const password = adminPasswordInput.value.trim();
+
+                // Check credentials
+                if (username === mockAdminCredentials.username && password === mockAdminCredentials.password) {
+                    // Success - redirect to admin dashboard
+                    localStorage.setItem("klh_is_admin", "true");
+                    btnText.textContent = 'Access Granted!';
+                    setTimeout(function() {
+                        window.location.href = 'admin.html';
+                    }, 500);
+                } else {
+                    // Failed authentication
+                    btnText.textContent = 'Access Admin Dashboard';
+                    spinner.classList.add('hidden');
+                    adminSubmitBtn.disabled = false;
+
+                    // Show error messages
+                    adminUsernameError.textContent = 'Invalid username or password';
+                    adminUsernameError.classList.remove('hidden');
+                    adminUsernameInput.classList.add('input-error');
+                    adminPasswordInput.classList.add('input-error');
+                }
+            }, 1500);
+        });
+
+        // Real-time validation feedback
+        adminUsernameInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                adminUsernameError.classList.add('hidden');
+                this.classList.remove('input-error');
+            }
+        });
+
+        adminPasswordInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                adminPasswordError.classList.add('hidden');
+                this.classList.remove('input-error');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+<script src="js/ui.js"></script>
+</body>
+</html>

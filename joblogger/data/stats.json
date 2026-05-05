@@ -1,0 +1,145 @@
+{
+  "999": {
+    "name": "Test",
+    "jobs": [
+      {
+        "km": 100,
+        "income": 5000
+      }
+    ],
+    "daily": {
+      "2026-03-30": {
+        "jobs": 2,
+        "km": 100,
+        "income": 5000
+      }
+    }
+  },
+  
+  "111111": {
+    "name": "Shamz",
+    "jobs": [],
+    "daily": {
+      "2026-03-28": {
+        "km": 120,
+        "jobs": 15,
+        "income": 2000
+      }
+    }
+  },
+  "222222": {
+    "name": "Nik",
+    "jobs": [],
+    "daily": {
+      "2026-03-28": {
+        "km": 100,
+        "jobs": 10,
+        "income": 12000
+      }
+    }
+  },
+  "333323": {
+    "name": "Liy",
+    "jobs": [],
+    "daily": {
+      "2026-03-28": {
+        "km": 92,
+        "jobs": 2,
+        "income": 1000
+      }
+    }
+  },
+  "333333": {
+    "name": "Lancer",
+    "jobs": [],
+    "daily": {
+      "2026-03-28": {
+        "km": 90,
+        "jobs": 7,
+        "income": 8000
+      }
+    }
+  },
+  "5645107": {
+    "name": "zokosus",
+    "jobs": [
+      {
+        "from": "Nürnberg",
+        "to": "Nürnberg",
+        "km": 0,
+        "start": "2026-03-30T17:58:21.695Z",
+        "end": "2026-03-30T18:00:46.415Z",
+        "avgSpeed": 20,
+        "speedCategory": "Normal",
+        "income": 634
+      },
+      {
+        "from": "TruckersMP HQ",
+        "to": "TruckersMP HQ",
+        "km": 0,
+        "start": "2026-03-30T18:07:16.465Z",
+        "end": "2026-03-30T18:10:35.527Z",
+        "avgSpeed": 21,
+        "speedCategory": "Normal",
+        "income": 678
+      },
+      {
+        "from": "TruckersMP HQ",
+        "to": "TruckersMP HQ",
+        "km": 0,
+        "start": "2026-03-30T18:23:27.506Z",
+        "end": "2026-03-30T18:27:48.504Z",
+        "avgSpeed": 25,
+        "speedCategory": "Normal",
+        "income": 778
+      },
+      {
+        "from": "Milano",
+        "to": "Milano",
+        "km": 0,
+        "start": "2026-03-30T18:40:30.091Z",
+        "end": "2026-03-30T18:45:51.849Z",
+        "avgSpeed": 27,
+        "speedCategory": "Normal",
+        "income": 958
+      },
+      {
+        "from": "Rostock",
+        "to": "Rostock",
+        "km": 0,
+        "start": "2026-03-30T19:05:43.054Z",
+        "end": "2026-03-30T19:11:01.394Z",
+        "avgSpeed": 1,
+        "speedCategory": "Normal",
+        "income": 731
+      },
+      {
+        "from": "Rostock",
+        "to": "Rostock",
+        "km": 0,
+        "start": "2026-03-30T19:11:27.518Z",
+        "end": "2026-03-30T19:15:39.867Z",
+        "avgSpeed": 21,
+        "speedCategory": "Normal",
+        "income": 731
+      },
+      {
+        "from": "Dover",
+        "to": "Dover",
+        "km": 1.08,
+        "start": "2026-03-30T19:35:36.813Z",
+        "end": "2026-03-30T19:38:25.553Z",
+        "avgSpeed": 26,
+        "speedCategory": "Normal",
+        "income": 678
+      }
+    ],
+    "daily": {
+      "2026-03-30": {
+        "km": 3.29,
+        "jobs": 7,
+        "income": 5188
+      }
+    }
+  }
+}

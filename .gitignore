@@ -1,0 +1,17 @@
+# Node modules (ALL)
+node_modules/
+**/node_modules/
+
+# Builds / binaries
+dist/
+build/
+updates/
+*.exe
+*.zip
+
+# Logs / env
+.env
+*.log
+
+# Optional
+.vscode/
