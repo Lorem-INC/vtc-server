@@ -3,13 +3,14 @@
     "axios": "^1.14.0",
     "cors": "^2.8.6",
     "electron": "^41.1.0",
-    "express": "^5.2.1",
+    "express": "^4.19.2",
+    "chokidar": "^5.0.0",
     "fs": "^0.0.1-security",
     "node-fetch": "^3.3.2"
   },
   "name": "wbkeralalogisticshub",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "joblogger/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,3 +19,4 @@
   "license": "ISC",
   "description": ""
 }
+
