@@ -13,6 +13,10 @@ app.use(express.static(PUBLIC_DIR));
 
 const PORT = process.env.PORT || 5000;
 
+app.get("/", (req, res) => {
+  res.send("API is running ✅");
+});
+
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
 });
@@ -20,7 +24,7 @@ app.listen(PORT, () => {
 // CONFIG
 // ==============================
 
-const CONFIG = JSON.parse(fs.readFileSync("./config.json", "utf8"));
+
 const DRIVER_ID = CONFIG.driverId;
 const DATA_FILE = "./data/stats.json";
 const DRIVER_NAME = CONFIG.driverName;
