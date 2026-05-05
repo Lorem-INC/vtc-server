@@ -25,10 +25,6 @@ app.listen(PORT, () => {
 // ==============================
 
 
-const DRIVER_ID = CONFIG.driverId;
-const DATA_FILE = "./data/stats.json";
-const DRIVER_NAME = CONFIG.driverName;
-const VTC_ID = CONFIG.vtcId || 69772;
 // ==============================
 // STATE
 // ==============================
