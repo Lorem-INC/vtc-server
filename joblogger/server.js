@@ -16,6 +16,7 @@ const DATA_FILE = path.join(DATA_DIR, "data.json");
 console.log(`[STARTUP] PORT: ${PORT}`);
 console.log(`[STARTUP] DATA_DIR: ${DATA_DIR}`);
 console.log(`[STARTUP] NODE_ENV: ${process.env.NODE_ENV || "development"}`);
+console.log(`[STARTUP] All env vars:`, Object.keys(process.env).filter(key => key.includes('PORT') || key.includes('NODE') || key.includes('RAILWAY')));
 
 // ==============================
 // MIDDLEWARE
@@ -265,6 +266,8 @@ app.use((req, res) => {
 // ==============================
 // START SERVER
 // ==============================
+
+console.log(`[STARTUP] About to start server on port ${PORT}...`);
 
 const server = app.listen(PORT, () => {
   const timestamp = new Date().toISOString();
