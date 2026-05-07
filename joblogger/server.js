@@ -40,19 +40,23 @@ process.on("unhandledRejection", (reason, promise) => {
 });
 
 // ==============================
-// INITIALIZE DATA DIRECTORY
+// INITIALIZE DATA DIRECTORY (DEFENSIVE)
 // ==============================
 
+let dataDirReady = false;
 try {
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
     console.log(`[STARTUP] Created data directory: ${DATA_DIR}`);
+    dataDirReady = true;
   } else {
     console.log(`[STARTUP] Data directory exists: ${DATA_DIR}`);
+    dataDirReady = true;
   }
 } catch (err) {
-  console.error(`[ERROR] Failed to create data directory: ${err.message}`);
-  console.warn(`[WARNING] Will continue without persistent storage`);
+  console.error(`[STARTUP] Failed to create/access data directory: ${err.message}`);
+  console.warn(`[STARTUP] Will run in memory-only mode`);
+  dataDirReady = false;
 }
 
 // ==============================
@@ -60,22 +64,36 @@ try {
 // ==============================
 
 function loadData() {
+  if (!dataDirReady) {
+    console.log(`[DATA] Memory-only mode: returning empty data`);
+    return {};
+  }
+
   try {
     if (!fs.existsSync(DATA_FILE)) {
+      console.log(`[DATA] Creating new data file: ${DATA_FILE}`);
       fs.writeFileSync(DATA_FILE, JSON.stringify({}));
     }
-    return JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
+    const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
+    console.log(`[DATA] Loaded data with ${Object.keys(data).length} drivers`);
+    return data;
   } catch (err) {
-    console.error("Load error:", err);
+    console.error(`[DATA] Load error: ${err.message}`);
     return {};
   }
 }
 
 function saveData(data) {
+  if (!dataDirReady) {
+    console.log(`[DATA] Memory-only mode: skipping save`);
+    return;
+  }
+
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+    console.log(`[DATA] Saved data for ${Object.keys(data).length} drivers`);
   } catch (err) {
-    console.error("Save error:", err);
+    console.error(`[DATA] Save error: ${err.message}`);
   }
 }
 
