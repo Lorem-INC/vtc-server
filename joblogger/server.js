@@ -8,7 +8,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const DATA_FILE = path.join(__dirname, "data.json");
+// Use environment variable for data file location, fallback to current directory
+const DATA_DIR = process.env.DATA_DIR || __dirname;
+const DATA_FILE = path.join(DATA_DIR, "data.json");
+
+// Ensure data directory exists
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch (err) {
+  console.error("Directory creation error:", err);
+}
+
+// ==============================
+// CONFIG
+// ==============================
+
+const PORT = process.env.PORT || 5000;
 
 // ==============================
 // SAFE DATA HANDLING
@@ -39,7 +56,12 @@ function saveData(data) {
 // ==============================
 
 app.get("/", (req, res) => {
-  res.send("API is running ✅");
+  res.json({ 
+    status: "API is running ✅",
+    port: PORT,
+    nodeEnv: process.env.NODE_ENV || "development",
+    dataFile: DATA_FILE
+  });
 });
 
 // ==============================
@@ -168,9 +190,9 @@ app.get("/api/top-performers", (req, res) => {
 // START SERVER
 // ==============================
 
-const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, "0.0.0.0", () => {
-  console.log("Server running on port " + PORT);
-  console.log("Environment:", process.env.NODE_ENV || "development");
+  console.log(`[${new Date().toISOString()}] Server running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
+  console.log(`Data file: ${DATA_FILE}`);
+  console.log("✅ Server is ready to accept connections");
 });
