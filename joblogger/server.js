@@ -248,12 +248,13 @@ app.use((req, res) => {
 // START SERVER
 // ==============================
 
-const server = app.listen(PORT, "0.0.0.0", () => {
+const server = app.listen(PORT, () => {
   const timestamp = new Date().toISOString();
   console.log(`[${timestamp}] ✅ SERVER STARTED SUCCESSFULLY`);
-  console.log(`[${timestamp}] Listening on 0.0.0.0:${PORT}`);
+  console.log(`[${timestamp}] Listening on port ${PORT}`);
   console.log(`[${timestamp}] Environment: ${process.env.NODE_ENV || "development"}`);
   console.log(`[${timestamp}] Data file: ${DATA_FILE}`);
+  console.log(`[${timestamp}] Process ID: ${process.pid}`);
 });
 
 // Handle server errors
